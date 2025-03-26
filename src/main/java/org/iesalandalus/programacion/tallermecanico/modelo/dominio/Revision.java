@@ -18,9 +18,9 @@ public class Revision extends Trabajo {
     public String toString() {
         String cadena;
         if (!estaCerrada()){
-            cadena = String.format("%s - %s: (%s - ), 0 horas, 0,00 € en material", getCliente(), getVehiculo(), getFechaInicio().format(FORMATO_FECHA));
+            cadena = String.format("Revisión -> %s - %s (%s - ): 0 horas", getCliente(), getVehiculo(), getFechaInicio().format(FORMATO_FECHA));
         }else {
-            cadena =  String.format("%s - %s: (%s - %s), 0 horas, 0,00 € en material, 10,00 € total", getCliente(), getVehiculo(), getFechaInicio().format(FORMATO_FECHA), getFechaFin().format(FORMATO_FECHA));
+            cadena =  String.format("Revisión -> %s - %s (%s - %s): 0 horas, 10,00 € total", getCliente(), getVehiculo(), getFechaInicio().format(FORMATO_FECHA), getFechaFin().format(FORMATO_FECHA));
         }
         return cadena;
     }
