@@ -49,5 +49,5 @@ public enum Opcion {
     }
 
     @Override
-    public String toString() {return String.format("[numeroOpcion=%s, texto=%s]", numeroOpcion, texto);}
+    public String toString() {return String.format("%s. %s", numeroOpcion, texto);}
 }

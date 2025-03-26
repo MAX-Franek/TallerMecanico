@@ -2,6 +2,7 @@ package org.iesalandalus.programacion.tallermecanico.modelo.negocio;
 
 import org.iesalandalus.programacion.tallermecanico.modelo.TallerMecanicoExcepcion;
 import org.iesalandalus.programacion.tallermecanico.modelo.dominio.Cliente;
+import org.iesalandalus.programacion.tallermecanico.modelo.dominio.Mecanico;
 import org.iesalandalus.programacion.tallermecanico.modelo.dominio.Revision;
 import org.iesalandalus.programacion.tallermecanico.modelo.dominio.Vehiculo;
 
@@ -73,12 +74,12 @@ public class Revisiones {
         }
         return revisionesExistentes;
     }
-    public Revision anadirPrecioMaterial (Revision revision, float precioMaterial)throws TallerMecanicoExcepcion{
-        Objects.requireNonNull(revision,"No puedo operar sobre una revisión nula.");
-        Revision revisionesExistentes = getRevision(revision);
-        revisionesExistentes.anadirPrecioMaterial(precioMaterial);
-        return revisionesExistentes;
-    }
+//    public Revision anadirPrecioMaterial (Revision revision, float precioMaterial)throws TallerMecanicoExcepcion{
+//        Objects.requireNonNull(revision,"No puedo operar sobre una revisión nula.");
+//        Revision revisionesExistentes = getRevision(revision);
+//        revisionesExistentes.anadirPrecioMaterial(precioMaterial);
+//        return revisionesExistentes;
+//    }
     public Revision cerrar (Revision revision, LocalDate fechaFin)throws TallerMecanicoExcepcion{
         Objects.requireNonNull(revision,"No puedo operar sobre una revisión nula.");
         Revision revisionesExistentes = getRevision(revision);
