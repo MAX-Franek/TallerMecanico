@@ -39,7 +39,7 @@ public class Vista {
             case BUSCAR_REVISION -> buscarRevision();
             case MODIFICAR_CLIENTE-> modificarCliente();
             case ANADIR_HORAS_REVISION -> anadirHoras();
-//            case ANADIR_PRECIO_MATERIAL_REVISION -> anadirPrecioMaterial();
+            case ANADIR_PRECIO_MATERIAL_REVISION -> anadirPrecioMaterial();
             case CERRAR_REVISION -> cerrarRevision();
             case BORRAR_CLIENTE -> borrarCliente();
             case BORRAR_VEHICULO -> borrarVehiculo();
@@ -144,17 +144,17 @@ public class Vista {
         }
     }
 
-//    private void anadirPrecioMaterial() {
-//        Consola.mostrarCabecera("Añadir Precio Material");
-//        try {
-//            Revision revision = Consola.leerRevision();
-//            float precioMaterial = Consola.leerPrecioMaterial();
-//            controlador.anadirPrecioMaterial(revision, precioMaterial);
-//            System.out.println("Precio del material añadido correctamente.");
-//        } catch (Exception e) {
-//            System.out.println(e.getMessage());
-//        }
-//    }
+    private void anadirPrecioMaterial() {
+        Consola.mostrarCabecera("Añadir Precio Material");
+        try {
+            Revision revision = Consola.leerRevision();
+            float precioMaterial = Consola.leerPrecioMaterial();
+            controlador.anadirPrecioMaterial(revision, precioMaterial);
+            System.out.println("Precio del material añadido correctamente.");
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
 
     private void cerrarRevision() {
         Consola.mostrarCabecera("Cerrar Revisión");

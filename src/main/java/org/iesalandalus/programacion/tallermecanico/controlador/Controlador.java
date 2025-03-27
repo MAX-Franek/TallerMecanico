@@ -65,9 +65,9 @@ public class Controlador {
         return modelo.anadirHoras(revision, horas);
     }
 
-//    public Revision anadirPrecioMaterial(Revision revision, float precioMaterial) throws TallerMecanicoExcepcion {
-//        return modelo.anadirPrecioMaterial(revision, precioMaterial);
-//    }
+    public Revision anadirPrecioMaterial(Revision revision, float precioMaterial) throws TallerMecanicoExcepcion {
+        return modelo.anadirPrecioMaterial(revision, precioMaterial);
+    }
 
     public Revision cerrar(Revision revision, LocalDate fechaFin) throws TallerMecanicoExcepcion {
         return modelo.cerrar(revision, fechaFin);

@@ -73,12 +73,12 @@ public class Revisiones {
         }
         return revisionesExistentes;
     }
-//    public Revision anadirPrecioMaterial (Revision revision, float precioMaterial)throws TallerMecanicoExcepcion{
-//        Objects.requireNonNull(revision,"No puedo operar sobre una revisión nula.");
-//        Revision revisionesExistentes = getRevision(revision);
-//        revisionesExistentes.anadirPrecioMaterial(precioMaterial);
-//        return revisionesExistentes;
-//    }
+    public Revision anadirPrecioMaterial (Revision revision, float precioMaterial)throws TallerMecanicoExcepcion{
+        Objects.requireNonNull(revision,"No puedo operar sobre una revisión nula.");
+        Revision revisionesExistentes = getRevision(revision);
+        revisionesExistentes.anadirPrecioMaterial(precioMaterial);
+        return revisionesExistentes;
+    }
     public Revision cerrar (Revision revision, LocalDate fechaFin)throws TallerMecanicoExcepcion{
         Objects.requireNonNull(revision,"No puedo operar sobre una revisión nula.");
         Revision revisionesExistentes = getRevision(revision);

@@ -58,9 +58,9 @@ public class Modelo {
     public Revision anadirHoras(Revision revision, int horas)throws TallerMecanicoExcepcion{
         return revisiones.anadirHoras(revision, horas);
     }
-//    public Revision anadirPrecioMaterial(Revision revision, float precioMaterial)throws TallerMecanicoExcepcion{
-//        return revisiones.anadirPrecioMaterial(revision, precioMaterial);
-//    }
+    public Revision anadirPrecioMaterial(Revision revision, float precioMaterial)throws TallerMecanicoExcepcion{
+        return revisiones.anadirPrecioMaterial(revision, precioMaterial);
+    }
     public Revision cerrar(Revision revision, LocalDate fechaFin)throws TallerMecanicoExcepcion{
         return revisiones.cerrar(revision, fechaFin);
     }
