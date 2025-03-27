@@ -103,13 +103,13 @@ public abstract class Trabajo {
         if (horas <= 0) {
             throw new IllegalArgumentException("Las horas a añadir deben ser mayores que cero.");
         }
-        if (estaCerrada()) {
+        if (estaCerrado()) {
             throw new TallerMecanicoExcepcion("No se puede añadir horas, ya que el trabajo está cerrado.");
         }
         this.horas += horas;
     }
 
-    public boolean estaCerrada() {
+    public boolean estaCerrado() {
         return (fechaFin != null);
 
     }
@@ -117,15 +117,15 @@ public abstract class Trabajo {
     public void cerrar(LocalDate fechaFin) throws TallerMecanicoExcepcion {
 
         Objects.requireNonNull(fechaFin, "La fecha de fin no puede ser nula.");
-        if (estaCerrada()) {
-            throw new TallerMecanicoExcepcion("La revisión ya está cerrada.");
+        if (estaCerrado()) {
+            throw new TallerMecanicoExcepcion("El trabajo ya está cerrado.");
         }
         setFechaFin(fechaFin);
     }
 
     public float getPrecio() {return getPrecioFijo() + getPrecioEspecifico();}
-    private float getPrecioFijo(){return (estaCerrada() ? FACTOR_DIA * getDias() : 0);}
-    private float getDias(){return (estaCerrada()) ? (int) ChronoUnit.DAYS.between(fechaInicio, fechaFin) : 0;}
+    private float getPrecioFijo(){return (estaCerrado() ? FACTOR_DIA * getDias() : 0);}
+    private float getDias(){return (estaCerrado()) ? (int) ChronoUnit.DAYS.between(fechaInicio, fechaFin) : 0;}
     public abstract float getPrecioEspecifico();
 
     @Override

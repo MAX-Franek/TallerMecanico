@@ -12,12 +12,12 @@ public class Revision extends Trabajo {
     public Revision(Revision revision){super(revision);}
 
     @Override
-    public float getPrecioEspecifico(){return (estaCerrada()) ? FACTOR_HORA * getHoras() : 0;}
+    public float getPrecioEspecifico(){return (estaCerrado()) ? FACTOR_HORA * getHoras() : 0;}
 
     @Override
     public String toString() {
         String cadena;
-        if (!estaCerrada()){
+        if (!estaCerrado()){
             cadena = String.format("Revisión -> %s - %s (%s - ): 0 horas", getCliente(), getVehiculo(), getFechaInicio().format(FORMATO_FECHA));
         }else {
             cadena =  String.format("Revisión -> %s - %s (%s - %s): 0 horas, 10,00 € total", getCliente(), getVehiculo(), getFechaInicio().format(FORMATO_FECHA), getFechaFin().format(FORMATO_FECHA));

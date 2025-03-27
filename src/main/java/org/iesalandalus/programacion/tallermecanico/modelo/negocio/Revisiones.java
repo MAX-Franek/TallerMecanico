@@ -2,7 +2,6 @@ package org.iesalandalus.programacion.tallermecanico.modelo.negocio;
 
 import org.iesalandalus.programacion.tallermecanico.modelo.TallerMecanicoExcepcion;
 import org.iesalandalus.programacion.tallermecanico.modelo.dominio.Cliente;
-import org.iesalandalus.programacion.tallermecanico.modelo.dominio.Mecanico;
 import org.iesalandalus.programacion.tallermecanico.modelo.dominio.Revision;
 import org.iesalandalus.programacion.tallermecanico.modelo.dominio.Vehiculo;
 
@@ -45,7 +44,7 @@ public class Revisiones {
     }
     private void comprobarRevision (Cliente cliente, Vehiculo vehiculo, LocalDate fechaRevision)throws TallerMecanicoExcepcion{
         for (Revision revision : coleccionRevisiones){
-            if (!revision.estaCerrada()){
+            if (!revision.estaCerrado()){
                 if (revision.getCliente().equals(cliente)){
                     throw new TallerMecanicoExcepcion("El cliente tiene otra revisión en curso.");
                 } else if (revision.getVehiculo().equals(vehiculo)) {
