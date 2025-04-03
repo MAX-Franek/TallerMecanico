@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class Clientes implements IClientes {
-    private List<Cliente> coleccionClientes;
+    private final List<Cliente> coleccionClientes;
 
     public Clientes(){
         coleccionClientes = new ArrayList<>();
@@ -28,7 +28,7 @@ public class Clientes implements IClientes {
         coleccionClientes.add(cliente);
     }
     @Override
-    public boolean modificar(Cliente cliente, String nombre, String telefono) throws TallerMecanicoExcepcion {
+    public Cliente modificar(Cliente cliente, String nombre, String telefono) throws TallerMecanicoExcepcion {
         Objects.requireNonNull(cliente,"No se puede modificar un cliente nulo.");
         Cliente clienteExistente = buscar(cliente);
         if (clienteExistente == null){
@@ -40,7 +40,7 @@ public class Clientes implements IClientes {
         if (telefono != null && !telefono.trim().isEmpty()){
             clienteExistente.setTelefono(telefono);
         }
-        return true;
+        return clienteExistente;
 
     }
     @Override

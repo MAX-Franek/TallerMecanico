@@ -1,28 +1,42 @@
 package org.iesalandalus.programacion.tallermecanico.modelo.dominio;
 
+
 import java.time.LocalDate;
+
+
 
 public class Revision extends Trabajo {
 
+
     private static final float FACTOR_HORA = 35F;
 
-    public Revision(Cliente cliente, Vehiculo vehiculo, LocalDate fechaInicio){
+
+    public Revision(Cliente cliente, Vehiculo vehiculo, LocalDate fechaInicio) {
         super(cliente, vehiculo, fechaInicio);
     }
-    public Revision(Revision revision){super(revision);}
+
+
+    public Revision(Revision revision) {
+        super(revision);
+    }
+
 
     @Override
-    public float getPrecioEspecifico(){return (estaCerrado()) ? FACTOR_HORA * getHoras() : 0;}
+    public float getPrecioEspecifico() {
+        return (estaCerrado()) ? FACTOR_HORA * getHoras() : 0;
+    }
+
 
     @Override
     public String toString() {
         String cadena;
-        if (!estaCerrado()){
+        if (!estaCerrado()) {
             cadena = String.format("Revisión -> %s - %s (%s - ): 0 horas", getCliente(), getVehiculo(), getFechaInicio().format(FORMATO_FECHA));
-        }else {
-            cadena =  String.format("Revisión -> %s - %s (%s - %s): 0 horas, 10,00 € total", getCliente(), getVehiculo(), getFechaInicio().format(FORMATO_FECHA), getFechaFin().format(FORMATO_FECHA));
+        } else {
+            cadena = String.format("Revisión -> %s - %s (%s - %s): 0 horas, 10,00 € total", getCliente(), getVehiculo(), getFechaInicio().format(FORMATO_FECHA), getFechaFin().format(FORMATO_FECHA));
         }
         return cadena;
     }
+
 
 }

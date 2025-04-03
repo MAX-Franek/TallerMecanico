@@ -9,15 +9,17 @@ import java.util.List;
 import java.util.Objects;
 
 public class Vehiculos implements IVehiculos {
-    private List<Vehiculo> coleccionVehiculos;
+    private final List<Vehiculo> coleccionVehiculos;
 
     public Vehiculos(){
         coleccionVehiculos = new ArrayList<>();
     }
+
     @Override
     public List<Vehiculo> get() {
         return new ArrayList<>(coleccionVehiculos);
     }
+    
     @Override
     public void insertar(Vehiculo vehiculo) throws TallerMecanicoExcepcion{
         Objects.requireNonNull(vehiculo,"No se puede insertar un vehículo nulo.");

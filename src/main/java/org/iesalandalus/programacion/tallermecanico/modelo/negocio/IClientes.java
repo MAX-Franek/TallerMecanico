@@ -10,7 +10,7 @@ public interface IClientes {
 
     void insertar(Cliente cliente) throws TallerMecanicoExcepcion;
 
-    boolean modificar(Cliente cliente, String nombre, String telefono) throws TallerMecanicoExcepcion;
+    Cliente modificar(Cliente cliente, String nombre, String telefono) throws TallerMecanicoExcepcion;
 
     Cliente buscar(Cliente cliente);
 
