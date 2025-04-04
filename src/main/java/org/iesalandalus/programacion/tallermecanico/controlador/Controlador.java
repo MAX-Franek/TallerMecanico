@@ -35,8 +35,8 @@ public class Controlador implements IControlador {
 
     @Override
     public void terminar() {
-        modelo.comenzar();
-        vista.comenzar();
+        modelo.terminar();
+        vista.terminar();
     }
 
     @Override

@@ -49,6 +49,7 @@ public class Clientes implements IClientes {
         int indice = coleccionClientes.indexOf(cliente);
         return (indice != -1) ? coleccionClientes.get(indice) : null;
     }
+
     @Override
     public void borrar(Cliente cliente) throws TallerMecanicoExcepcion {
         Objects.requireNonNull(cliente, "No se puede borrar un cliente nulo.");

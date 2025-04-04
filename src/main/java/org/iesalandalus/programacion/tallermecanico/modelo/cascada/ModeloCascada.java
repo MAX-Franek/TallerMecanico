@@ -53,14 +53,14 @@ public class ModeloCascada implements Modelo {
     }
     @Override
     public Cliente buscar(Cliente cliente){
-        cliente = Objects.requireNonNull(clientes.buscar(cliente),"No existe un cliente igual.");
-        return new Cliente(cliente);
+        Cliente encontrado = clientes.buscar(cliente);
+        return (encontrado != null) ? new Cliente(encontrado) : null;
     }
     @Override
-    public Vehiculo buscar(Vehiculo vehiculo){
-        vehiculo = Objects.requireNonNull(vehiculos.buscar(vehiculo),"No existe un vehiculo igual.");
-        return vehiculo;
+    public Vehiculo buscar(Vehiculo vehiculo) {
+        return vehiculos.buscar(vehiculo);
     }
+
     @Override
     public Trabajo buscar(Trabajo trabajo){
         trabajo = Objects.requireNonNull(trabajos.buscar(trabajo),"No existe una revisión igual.");
