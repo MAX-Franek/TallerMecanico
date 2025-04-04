@@ -39,14 +39,13 @@ public record Vehiculo(String marca, String modelo, String matricula) {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Vehiculo vehiculo = (Vehiculo) o;
-        return Objects.equals(marca, vehiculo.marca) && Objects.equals(modelo, vehiculo.modelo) && Objects.equals(matricula, vehiculo.matricula);
+        if (!(o instanceof Vehiculo vehiculo)) return false;
+        return Objects.equals(matricula, vehiculo.matricula);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(marca, modelo, matricula);
+        return Objects.hashCode(matricula);
     }
 
     @Override
