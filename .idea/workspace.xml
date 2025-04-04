@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f8b0e04e-6981-41d9-b2bd-c9ae382a0816" name="Changes" comment="Cambio readme pongo mi nombre en ficheros">
+    <list default="true" id="f8b0e04e-6981-41d9-b2bd-c9ae382a0816" name="Changes" comment="Controlador modificado">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/iesalandalus/programacion/tallermecanico/modelo/dominio/TipoTrabajo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/iesalandalus/programacion/tallermecanico/controlador/Controlador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/iesalandalus/programacion/tallermecanico/controlador/Controlador.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,9 +49,9 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JUnit5 Test Class" />
-        <option value="Enum" />
         <option value="Class" />
         <option value="Exception" />
+        <option value="Enum" />
       </list>
     </option>
   </component>
@@ -266,7 +266,15 @@
       <option name="project" value="LOCAL" />
       <updated>1743756431015</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Controlador modificado">
+      <option name="closed" value="true" />
+      <created>1743761656254</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1743761656254</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -276,7 +284,8 @@
     <MESSAGE value="Commit inicial con el enunciado, las dependencias y los tests." />
     <MESSAGE value="Cambio readme pongo mi nombre" />
     <MESSAGE value="Cambio readme pongo mi nombre en ficheros" />
-    <option name="LAST_COMMIT_MESSAGE" value="Cambio readme pongo mi nombre en ficheros" />
+    <MESSAGE value="Controlador modificado" />
+    <option name="LAST_COMMIT_MESSAGE" value="Controlador modificado" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/TallerMecanico$RevisionTest.ic" NAME="RevisionTest Coverage Results" MODIFIED="1706862963586" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
