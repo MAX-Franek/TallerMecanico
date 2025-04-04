@@ -1,11 +1,14 @@
 package org.iesalandalus.programacion.tallermecanico.controlador;
 
+import org.iesalandalus.programacion.tallermecanico.modelo.FabricaModelo;
 import org.iesalandalus.programacion.tallermecanico.modelo.Modelo;
 import org.iesalandalus.programacion.tallermecanico.modelo.cascada.ModeloCascada;
 import org.iesalandalus.programacion.tallermecanico.modelo.TallerMecanicoExcepcion;
 import org.iesalandalus.programacion.tallermecanico.modelo.dominio.Cliente;
 import org.iesalandalus.programacion.tallermecanico.modelo.dominio.Revision;
 import org.iesalandalus.programacion.tallermecanico.modelo.dominio.Vehiculo;
+import org.iesalandalus.programacion.tallermecanico.modelo.negocio.FabricaFuenteDatos;
+import org.iesalandalus.programacion.tallermecanico.vista.FabricaVista;
 import org.iesalandalus.programacion.tallermecanico.vista.Vista;
 import org.iesalandalus.programacion.tallermecanico.vista.eventos.Evento;
 import org.iesalandalus.programacion.tallermecanico.vista.texto.VistaTexto;
@@ -16,15 +19,16 @@ import java.util.Objects;
 
 public class Controlador implements IControlador {
 
-    private final Modelo modelo;
-    private final Vista vista;
+    private Modelo modelo;
+    private Vista vista;
 
-    public Controlador(Modelo modelo, Vista vista) {
-        Objects.requireNonNull(modelo,"ERROR: El modelo no puede ser nulo");
-        Objects.requireNonNull(vista,"ERROR: La vista no puede ser nula");
-        this.modelo = modelo;
-        this.vista = vista;
-        this.vista.getGestorEventos().suscribir(this, Evento.values());
+    public Controlador(FabricaModelo fabricaModelo, FabricaFuenteDatos fabricaFuenteDatos, FabricaVista fabricaVista) {
+        Objects.requireNonNull(fabricaModelo,"ERROR: La fabrica de modelo no puede ser nula.");
+        Objects.requireNonNull(fabricaFuenteDatos,"ERROR: La fabrica de fuentes de datos no puede ser nula.");
+        Objects.requireNonNull(fabricaVista,"ERROR: La fabrica de vista no puede ser nula.");
+        fabricaFuenteDatos.crear();
+        fabricaVista.crear();
+        fabricaModelo.crear(fabricaFuenteDatos);
     }
 
     @Override
