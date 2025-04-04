@@ -1,11 +1,13 @@
 package org.iesalandalus.programacion.tallermecanico.modelo;
 
-import org.iesalandalus.programacion.tallermecanico.modelo.cascada.ModeloCascada;
 import org.iesalandalus.programacion.tallermecanico.modelo.dominio.*;
-import org.iesalandalus.programacion.tallermecanico.modelo.negocio.*;
-import org.iesalandalus.programacion.tallermecanico.modelo.negocio.memoria.Clientes;
-import org.iesalandalus.programacion.tallermecanico.modelo.negocio.memoria.Trabajos;
-import org.iesalandalus.programacion.tallermecanico.modelo.negocio.memoria.Vehiculos;
+import org.iesalandalus.programacion.tallermecanico.modelo.negocio.FabricaFuenteDatos;
+import org.iesalandalus.programacion.tallermecanico.modelo.negocio.IClientes;
+import org.iesalandalus.programacion.tallermecanico.modelo.negocio.ITrabajos;
+import org.iesalandalus.programacion.tallermecanico.modelo.negocio.IVehiculos;
+import org.iesalandalus.programacion.tallermecanico.modelo.negocio.ficheros.Clientes;
+import org.iesalandalus.programacion.tallermecanico.modelo.negocio.ficheros.Trabajos;
+import org.iesalandalus.programacion.tallermecanico.modelo.negocio.ficheros.Vehiculos;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -14,6 +16,7 @@ import org.mockito.*;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.EnumMap;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -28,7 +31,7 @@ class ModeloTest {
     @Mock
     private static ITrabajos trabajos;
     @InjectMocks
-    private Modelo modeloCascada = FabricaModelo.CASCADA.crear(FabricaFuenteDatos.MEMORIA);
+    private Modelo modelo = FabricaModelo.CASCADA.crear(FabricaFuenteDatos.FICHEROS);
 
     private static Cliente cliente;
     private static Vehiculo vehiculo;
@@ -88,24 +91,24 @@ class ModeloTest {
 
     @Test
     void comenzarNoHaceNada() {
-        assertDoesNotThrow(() -> modeloCascada.comenzar());
+        assertDoesNotThrow(() -> modelo.comenzar());
     }
 
     @Test
     void terminarNoHaceNada() {
-        assertDoesNotThrow(() -> modeloCascada.terminar());
+        assertDoesNotThrow(() -> modelo.terminar());
     }
 
     @Test
     void insertarClienteLlamaClientesInsertar() {
-        assertDoesNotThrow(() -> modeloCascada.insertar(cliente));
+        assertDoesNotThrow(() -> modelo.insertar(cliente));
         assertDoesNotThrow(() -> verify(clientes).insertar(any(Cliente.class)));
         assertDoesNotThrow(() -> verify(clientes, times(0)).insertar(cliente));
     }
 
     @Test
     void insertarVehiculoLlamaVehiculosInsertar() {
-        assertDoesNotThrow(() -> modeloCascada.insertar(vehiculo));
+        assertDoesNotThrow(() -> modelo.insertar(vehiculo));
         assertDoesNotThrow(() -> verify(vehiculos).insertar(vehiculo));
     }
 
@@ -114,7 +117,7 @@ class ModeloTest {
         InOrder orden = inOrder(clientes, vehiculos, trabajos);
         when(clientes.buscar(cliente)).thenReturn(cliente);
         when(vehiculos.buscar(vehiculo)).thenReturn(vehiculo);
-        assertDoesNotThrow(() -> modeloCascada.insertar(revision));
+        assertDoesNotThrow(() -> modelo.insertar(revision));
         orden.verify(clientes).buscar(cliente);
         orden.verify(vehiculos).buscar(vehiculo);
         assertDoesNotThrow(() -> orden.verify(trabajos).insertar(any(Trabajo.class)));
@@ -126,7 +129,7 @@ class ModeloTest {
         InOrder orden = inOrder(clientes, vehiculos, trabajos);
         when(clientes.buscar(cliente)).thenReturn(cliente);
         when(vehiculos.buscar(vehiculo)).thenReturn(vehiculo);
-        assertDoesNotThrow(() -> modeloCascada.insertar(mecanico));
+        assertDoesNotThrow(() -> modelo.insertar(mecanico));
         orden.verify(clientes).buscar(cliente);
         orden.verify(vehiculos).buscar(vehiculo);
         assertDoesNotThrow(() -> orden.verify(trabajos).insertar(any(Trabajo.class)));
@@ -135,51 +138,51 @@ class ModeloTest {
 
     @Test
     void buscarClienteLlamaClientesBuscar() {
-        assertDoesNotThrow(() -> modeloCascada.insertar(cliente));
+        assertDoesNotThrow(() -> modelo.insertar(cliente));
         when(clientes.buscar(cliente)).thenReturn(cliente);
-        Cliente clienteEncontrado = modeloCascada.buscar(cliente);
+        Cliente clienteEncontrado = modelo.buscar(cliente);
         verify(clientes).buscar(cliente);
         assertNotSame(cliente, clienteEncontrado);
     }
 
     @Test
     void buscarVehiculoLlamaVehiculosBuscar() {
-        assertDoesNotThrow(() -> modeloCascada.insertar(vehiculo));
+        assertDoesNotThrow(() -> modelo.insertar(vehiculo));
         when(vehiculos.buscar(vehiculo)).thenReturn(vehiculo);
-        modeloCascada.buscar(vehiculo);
+        modelo.buscar(vehiculo);
         verify(vehiculos).buscar(vehiculo);
     }
 
     @Test
     void buscarTrabajoLlamaTrabajosBuscar() {
-        assertDoesNotThrow(() -> modeloCascada.insertar(revision));
+        assertDoesNotThrow(() -> modelo.insertar(revision));
         when(trabajos.buscar(revision)).thenReturn(revision);
-        Trabajo trabajoEncontrada = modeloCascada.buscar(revision);
+        Trabajo trabajoEncontrada = modelo.buscar(revision);
         verify(trabajos).buscar(revision);
         assertNotSame(revision, trabajoEncontrada);
     }
 
     @Test
     void modificarClienteLlamaClientesModificar() {
-        assertDoesNotThrow(() -> modeloCascada.modificar(cliente, "Patricio Estrella", "950123456"));
+        assertDoesNotThrow(() -> modelo.modificar(cliente, "Patricio Estrella", "950123456"));
         assertDoesNotThrow(() -> verify(clientes).modificar(cliente, "Patricio Estrella", "950123456"));
     }
 
     @Test
     void anadirHorasLlamaTrabajosAnadirHoras() {
-        assertDoesNotThrow(() -> modeloCascada.anadirHoras(revision, 10));
+        assertDoesNotThrow(() -> modelo.anadirHoras(revision, 10));
         assertDoesNotThrow(() -> verify(trabajos).anadirHoras(revision, 10));
     }
 
     @Test
     void anadirPrecioMateriaLlamaTrabajosAnadirPrecioMaterial() {
-        assertDoesNotThrow(() -> modeloCascada.anadirPrecioMaterial(revision, 100f));
+        assertDoesNotThrow(() -> modelo.anadirPrecioMaterial(revision, 100f));
         assertDoesNotThrow(() -> verify(trabajos).anadirPrecioMaterial(revision, 100f));
     }
 
     @Test
     void cerrarLlamaTrabajosCerrar() {
-        assertDoesNotThrow(() -> modeloCascada.cerrar(revision, LocalDate.now()));
+        assertDoesNotThrow(() -> modelo.cerrar(revision, LocalDate.now()));
         assertDoesNotThrow(() -> verify(trabajos).cerrar(revision, LocalDate.now()));
     }
 
@@ -187,7 +190,7 @@ class ModeloTest {
     void borrarClienteLlamaTrabajosGetClienteTrabajosBorrarClientesBorrar() {
         simularClientesConTrabajos();
         InOrder orden = inOrder(clientes, trabajos);
-        assertDoesNotThrow(() -> modeloCascada.borrar(cliente));
+        assertDoesNotThrow(() -> modelo.borrar(cliente));
         orden.verify(trabajos).get(cliente);
         for (Trabajo trabajo : trabajos.get(cliente)) {
             assertDoesNotThrow(() -> orden.verify(trabajos).borrar(trabajo));
@@ -203,7 +206,7 @@ class ModeloTest {
     void borrarVehiculoLlamaTrabajosGetVehiculoTrabajosBorrarVehiculosBorrar() {
         simularVehiculosConTrabajos();
         InOrder orden = inOrder(vehiculos, trabajos);
-        assertDoesNotThrow(() -> modeloCascada.borrar(vehiculo));
+        assertDoesNotThrow(() -> modelo.borrar(vehiculo));
         orden.verify(trabajos).get(vehiculo);
         for (Trabajo trabajo : trabajos.get(vehiculo)) {
             assertDoesNotThrow(() -> orden.verify(trabajos).borrar(trabajo));
@@ -217,14 +220,14 @@ class ModeloTest {
 
     @Test
     void borrarTrabajoLlamaTrabajosBorrar() {
-        assertDoesNotThrow(() -> modeloCascada.borrar(revision));
+        assertDoesNotThrow(() -> modelo.borrar(revision));
         assertDoesNotThrow(() -> verify(trabajos).borrar(revision));
     }
 
     @Test
     void getClientesLlamaClientesGet() {
         when(clientes.get()).thenReturn(new ArrayList<>(List.of(cliente)));
-        List<Cliente> clientesExistentes = modeloCascada.getClientes();
+        List<Cliente> clientesExistentes = modelo.getClientes();
         verify(clientes).get();
         assertNotSame(cliente, clientesExistentes.get(0));
     }
@@ -232,7 +235,7 @@ class ModeloTest {
     @Test
     void getVehiculosLlamaVehiculosGet() {
         when(vehiculos.get()).thenReturn(new ArrayList<>(List.of(vehiculo)));
-        List<Vehiculo> vehiculosExistentes = modeloCascada.getVehiculos();
+        List<Vehiculo> vehiculosExistentes = modelo.getVehiculos();
         verify(vehiculos).get();
         assertSame(vehiculo, vehiculosExistentes.get(0));
     }
@@ -240,7 +243,7 @@ class ModeloTest {
     @Test
     void getTrabajosLlamaTrabajosGet() {
         when(trabajos.get()).thenReturn(new ArrayList<>(List.of(revision)));
-        List<Trabajo> trabajosExistentes = modeloCascada.getTrabajos();
+        List<Trabajo> trabajosExistentes = modelo.getTrabajos();
         verify(trabajos).get();
         assertNotSame(revision, trabajosExistentes.get(0));
     }
@@ -248,17 +251,24 @@ class ModeloTest {
     @Test
     void getTrabajosClienteLlamaTrabajosGetCliente() {
         when(trabajos.get(cliente)).thenReturn(new ArrayList<>(List.of(revision)));
-        List<Trabajo> trabajosCliente = modeloCascada.getTrabajos(cliente);
+        List<Trabajo> trabajosCliente = modelo.getTrabajos(cliente);
         verify(trabajos).get(cliente);
-        assertNotSame(revision,trabajosCliente.get(0));
+        assertNotSame(revision, trabajosCliente.get(0));
     }
 
     @Test
     void getTrabajosVehiculoLlamaTrabajosGetVehiculo() {
         when(trabajos.get(vehiculo)).thenReturn(new ArrayList<>(List.of(revision)));
-        List<Trabajo> trabajosVehiculo = modeloCascada.getTrabajos(vehiculo);
+        List<Trabajo> trabajosVehiculo = modelo.getTrabajos(vehiculo);
         verify(trabajos).get(vehiculo);
-        assertNotSame(revision,trabajosVehiculo.get(0));
+        assertNotSame(revision, trabajosVehiculo.get(0));
+    }
+
+    @Test
+    void getEstadisticasMensualesLlamaTrabajosGetEstadisticasMensuales() {
+        when(trabajos.getEstadisticasMensuales(LocalDate.now())).thenReturn(new EnumMap<>(TipoTrabajo.class));
+        modelo.getEstadisticasMensuales(LocalDate.now());
+        verify(trabajos).getEstadisticasMensuales(LocalDate.now());
     }
 
 }
