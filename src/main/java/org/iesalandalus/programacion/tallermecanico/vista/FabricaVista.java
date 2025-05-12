@@ -6,7 +6,9 @@ public enum FabricaVista {
 
     TEXTO {
         @Override
-        public Vista crear() {return new VistaTexto(); }
+        public Vista crear() {
+            return new VistaTexto();
+        }
     };
 
     public abstract Vista crear();

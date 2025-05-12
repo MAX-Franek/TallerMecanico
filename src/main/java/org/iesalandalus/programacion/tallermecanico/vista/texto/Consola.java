@@ -1,8 +1,5 @@
 package org.iesalandalus.programacion.tallermecanico.vista.texto;
 
-import org.iesalandalus.programacion.tallermecanico.modelo.dominio.Cliente;
-import org.iesalandalus.programacion.tallermecanico.modelo.dominio.Revision;
-import org.iesalandalus.programacion.tallermecanico.modelo.dominio.Vehiculo;
 import org.iesalandalus.programacion.tallermecanico.vista.eventos.Evento;
 import org.iesalandalus.programacion.utilidades.Entrada;
 
@@ -11,35 +8,34 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 
 public class Consola {
-    private static final String CADENA_FORMATO_FECHA = "dd/MM/yyyy";
 
+    private static final String CADENA_FORMATO_FECHA ="dd/MM/yyyy";
 
     private Consola() {}
 
     static void mostrarCabecera(String mensaje) {
         System.out.printf("%n%s%n", mensaje);
         String formatoStr = "%0" + mensaje.length() + "d%n";
-        System.out.println(String.format(formatoStr, 0).replace("0","-"));
+        System.out.println(String.format(formatoStr, 0).replace("0", "-"));
     }
 
     static void mostrarMenu() {
-        mostrarCabecera("Gestión de un talle mecánico.");
+        mostrarCabecera("Gestión de un taller mecánico.");
         for (Evento opcion : Evento.values()) {
             System.out.printf("%d.- %s%n", opcion.getCodigo(), opcion);
         }
     }
 
     static Evento elegirOpcion() {
-        Evento evento = null;
+        Evento opcion = null;
         do {
-            int opcionEntero = leerEntero("\nElige una opción: ");
             try {
-                evento = Evento.get(opcionEntero);
-            } catch (IllegalArgumentException e){
-                System.out.printf("ERROR: %s%n" , e.getMessage());
+                opcion = Evento.get(leerEntero("\nElige un opción: "));
+            } catch (IllegalArgumentException e) {
+                System.out.printf("ERROR: %s%n", e.getMessage());
             }
-        } while (evento == null);
-        return evento;
+        } while (opcion == null);
+        return opcion;
     }
 
     static int leerEntero(String mensaje) {
@@ -63,11 +59,10 @@ public class Consola {
         mensaje = String.format("%s (%s): ", mensaje, CADENA_FORMATO_FECHA);
         try {
             fecha = LocalDate.parse(leerCadena(mensaje), formatoFecha);
-        }catch (DateTimeParseException e){
+        } catch (DateTimeParseException e) {
             fecha = null;
         }
         return fecha;
     }
-
 
 }

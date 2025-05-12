@@ -5,6 +5,7 @@ import org.iesalandalus.programacion.tallermecanico.modelo.TallerMecanicoExcepci
 import java.time.LocalDate;
 
 public class Mecanico extends Trabajo {
+
     private static final float FACTOR_HORA = 30F;
     private static final float FACTOR_PRECIO_MATERIAL = 1.5F;
     private float precioMaterial;
@@ -34,17 +35,17 @@ public class Mecanico extends Trabajo {
     }
 
     @Override
-    public float getPrecioEspecifico(){
+    public float getPrecioEspecifico() {
         return (estaCerrado()) ? FACTOR_HORA * getHoras() + FACTOR_PRECIO_MATERIAL * getPrecioMaterial() : 0;
     }
 
     @Override
     public String toString() {
         String cadena;
-        if (!estaCerrado()){
-            cadena = String.format("Mecánico -> %s - %s (%s - ): 0 horas, 0,00 € en material", getCliente(), getVehiculo(), getFechaInicio().format(FORMATO_FECHA));
-        }else {
-            cadena =  String.format("Mecánico -> %s - %s (%s - %s): 0 horas, 0,00 € en material, 10,00 € total", getCliente(), getVehiculo(), getFechaInicio().format(FORMATO_FECHA), getFechaFin().format(FORMATO_FECHA));
+        if (!estaCerrado()) {
+            cadena = String.format("Mecánico -> %s - %s (%s - ): %d horas, %.2f € en material", getCliente(), getVehiculo(), getFechaInicio().format(FORMATO_FECHA), getHoras(), precioMaterial);
+        } else {
+            cadena = String.format("Mecánico -> %s - %s (%s - %s): %d horas, %.2f € en material, %.2f € total", getCliente(), getVehiculo(), getFechaInicio().format(FORMATO_FECHA), getFechaFin().format(FORMATO_FECHA), getHoras(), precioMaterial, getPrecio());
         }
         return cadena;
     }
