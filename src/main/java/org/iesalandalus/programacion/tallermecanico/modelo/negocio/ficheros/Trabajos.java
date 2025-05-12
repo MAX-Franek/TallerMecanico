@@ -1,4 +1,4 @@
-package org.iesalandalus.programacion.tallermecanico.modelo.negocio.memoria;
+package org.iesalandalus.programacion.tallermecanico.modelo.negocio.ficheros;
 
 
 import org.iesalandalus.programacion.tallermecanico.modelo.TallerMecanicoExcepcion;
@@ -6,7 +6,9 @@ import org.iesalandalus.programacion.tallermecanico.modelo.dominio.*;
 import org.iesalandalus.programacion.tallermecanico.modelo.negocio.ITrabajos;
 
 
+import javax.swing.text.Document;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -14,13 +16,34 @@ import java.util.Objects;
 
 
 public class Trabajos implements ITrabajos {
-    private final List<Trabajo> coleccionTrabajos;
+    private final String FICHERO_TRABAJOS ="../../../../../../../../../ficheros/trabajos.xml";
+    private final DateTimeFormatter FORMATO_FECHA = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+    private final String RAIZ = "TalleMecanico";
+    private final String TRABAJO = "trabajo";
+    private final String CLIENTE = "cliente";
+    private final String VEHICULO = "vehiculo";
+    private final String FECHA_INICIO = "fechaInicio";
+    private final String FECHA_FIN = "fechaFin";
+    private final String HORAS = "horas";
+    private final String PRECIO_MATERIAL = "Precio material";
+    private final String TIPO = "tipo ";
+    private final String REVISION = "revision";
+    private final String MECANICO = "Mecanico";
 
+    private final List<Trabajo> coleccionTrabajos;
 
     public Trabajos(){
         coleccionTrabajos = new ArrayList<>();
     }
+    protected static Trabajos getInstancia() {
+        return new Trabajos();
+    }
+    public void comenzar(){
 
+    }
+    private void procesarDocumentoXml(Document documentoXml){
+
+    }
 
     @Override
     public List<Trabajo> get(){
