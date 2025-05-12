@@ -4,11 +4,11 @@ import org.iesalandalus.programacion.tallermecanico.modelo.negocio.ficheros.Fuen
 
 public enum FabricaFuenteDatos {
 
-    MEMORIA{
+    FICHEROS {
         @Override
-        public IFuenteDatos crear(){return new FuenteDatosFicheros();}
-
-
+        public IFuenteDatos crear() {
+            return new FuenteDatosFicheros();
+        }
     };
 
     public abstract IFuenteDatos crear();
