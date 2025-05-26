@@ -4,11 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f8b0e04e-6981-41d9-b2bd-c9ae382a0816" name="Changes" comment="antes del desastre copiar profesor">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/iesalandalus/programacion/tallermecanico/vista/ventanas/LanzadoraVentanaPrincipal.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/iesalandalus/programacion/tallermecanico/vista/ventanas/VistaVentanas.java" afterDir="false" />
+    <list default="true" id="f8b0e04e-6981-41d9-b2bd-c9ae382a0816" name="Changes" comment="ficheros terminado con main funcional">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/iesalandalus/programacion/tallermecanico/vista/ventanas/controladores/LeerCliente.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/iesalandalus/programacion/tallermecanico/vista/ventanas/controladores/LeerRevision.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/iesalandalus/programacion/tallermecanico/vista/ventanas/controladores/LeerVehiculo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/iesalandalus/programacion/tallermecanico/vista/ventanas/controladores/VentanaPrincipal.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/vistas/LeerCliente.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/vistas/LeerRevision.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/vistas/LeerVehiculo.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/vistas/VentanaPrincipal.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/iesalandalus/programacion/tallermecanico/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/iesalandalus/programacion/tallermecanico/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/iesalandalus/programacion/tallermecanico/vista/FabricaVista.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/iesalandalus/programacion/tallermecanico/vista/FabricaVista.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/iesalandalus/programacion/tallermecanico/vista/ventanas/LanzadoraVentanaPrincipal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/iesalandalus/programacion/tallermecanico/vista/ventanas/LanzadoraVentanaPrincipal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/iesalandalus/programacion/tallermecanico/vista/ventanas/VistaVentanas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/iesalandalus/programacion/tallermecanico/vista/ventanas/VistaGrafica.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,6 +62,7 @@
         <option value="JUnit5 Test Class" />
         <option value="Exception" />
         <option value="Enum" />
+        <option value="FxmlFile" />
         <option value="Class" />
       </list>
     </option>
@@ -91,36 +101,37 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.Main.executor": "Run",
-    "Gradle.Build TallerMecanico.executor": "Run",
-    "Gradle.Tests in 'org.iesalandalus.programacion.tallermecanico.modelo'.executor": "Run",
-    "JUnit.org.iesalandalus.programacion.tallermecanico.modelo in TallerMecanicoResuelto.test.executor": "Run",
-    "RunOnceActivity.ChatTagsLlmMigration": "true",
-    "RunOnceActivity.CodyAccountHistoryMigration": "true",
-    "RunOnceActivity.CodyAccountsIdsRefresh": "true",
-    "RunOnceActivity.CodyAssignOrphanedChatsToActiveAccount": "true",
-    "RunOnceActivity.CodyConvertUrlToCodebaseName": "true",
-    "RunOnceActivity.CodyHistoryLlmMigration": "true",
-    "RunOnceActivity.CodyMigrateChatHistory-v2": "true",
-    "RunOnceActivity.CodyProjectSettingsMigration": "true",
-    "RunOnceActivity.DeprecatedChatLlmMigration": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.ToggleCodyToolWindowAfterMigration": "true",
-    "SONARLINT_PRECOMMIT_ANALYSIS": "true",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "git-widget-placeholder": "interfaces",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/home/pepino/Desarrollos/java/IntelliJ/Copias-TallerMecanico/TallerMecanico",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.pluginManager"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.LanzadoraVentanaPrincipal.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Build TallerMecanico.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Tests in 'org.iesalandalus.programacion.tallermecanico.modelo'.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.org.iesalandalus.programacion.tallermecanico.modelo in TallerMecanicoResuelto.test.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ChatTagsLlmMigration&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.CodyAccountHistoryMigration&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.CodyAccountsIdsRefresh&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.CodyAssignOrphanedChatsToActiveAccount&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.CodyConvertUrlToCodebaseName&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.CodyHistoryLlmMigration&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.CodyMigrateChatHistory-v2&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.CodyProjectSettingsMigration&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.DeprecatedChatLlmMigration&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ToggleCodyToolWindowAfterMigration&quot;: &quot;true&quot;,
+    &quot;SONARLINT_PRECOMMIT_ANALYSIS&quot;: &quot;true&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;interfaces&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/frans/Documents/1ºDAW/Programación/Practicar_07-04-2025&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/test/java/org/iesalandalus/programacion/tallermecanico/modelo/dominio" />
@@ -136,6 +147,19 @@
     </key>
   </component>
   <component name="RunManager" selected="Application.Main">
+    <configuration name="LanzadoraVentanaPrincipal" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.iesalandalus.programacion.tallermecanico.vista.ventanas.LanzadoraVentanaPrincipal" />
+      <module name="TallerMecanico.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.iesalandalus.programacion.tallermecanico.vista.ventanas.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.iesalandalus.programacion.tallermecanico.Main" />
       <module name="TallerMecanico.main" />
@@ -145,22 +169,6 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ModeloTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="TallerMecanico.test" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.iesalandalus.programacion.tallermecanico.modelo.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="org.iesalandalus.programacion.tallermecanico.modelo" />
-      <option name="MAIN_CLASS_NAME" value="org.iesalandalus.programacion.tallermecanico.modelo.ModeloTest" />
-      <option name="METHOD_NAME" value="" />
-      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -209,8 +217,8 @@
       </method>
     </configuration>
     <list>
+      <item itemvalue="Application.LanzadoraVentanaPrincipal" />
       <item itemvalue="Application.Main" />
-      <item itemvalue="JUnit.ModeloTest" />
       <item itemvalue="JUnit.RevisionTest" />
       <item itemvalue="JUnit.org.iesalandalus.programacion.tallermecanico.modelo in TallerMecanicoResuelto.test" />
       <item itemvalue="JUnit.org.iesalandalus.programacion.tallermecanico.modelo in TallerMecanico.test" />
@@ -218,10 +226,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
+        <item itemvalue="Application.LanzadoraVentanaPrincipal" />
         <item itemvalue="JUnit.org.iesalandalus.programacion.tallermecanico.modelo in TallerMecanico.test" />
         <item itemvalue="JUnit.org.iesalandalus.programacion.tallermecanico.modelo in TallerMecanicoResuelto.test" />
         <item itemvalue="JUnit.RevisionTest" />
-        <item itemvalue="JUnit.ModeloTest" />
       </list>
     </recent_temporary>
   </component>
@@ -282,7 +290,15 @@
       <option name="project" value="LOCAL" />
       <updated>1747048060465</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="ficheros terminado con main funcional">
+      <option name="closed" value="true" />
+      <created>1747050271282</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1747050271282</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -306,7 +322,8 @@
     <MESSAGE value="Controlador modificado" />
     <MESSAGE value="Tipotrabajo terminado" />
     <MESSAGE value="antes del desastre copiar profesor" />
-    <option name="LAST_COMMIT_MESSAGE" value="antes del desastre copiar profesor" />
+    <MESSAGE value="ficheros terminado con main funcional" />
+    <option name="LAST_COMMIT_MESSAGE" value="ficheros terminado con main funcional" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/TallerMecanico$RevisionTest.ic" NAME="RevisionTest Coverage Results" MODIFIED="1706862963586" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
